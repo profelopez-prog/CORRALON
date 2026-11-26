@@ -5,28 +5,29 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Corralón - Stock y documentos</title>
 <style>
-  :root{--az:#143a5a;--az2:#1d5080;--na:#e67a17;--ok:#1f9d57;--rojo:#c0392b;--gris:#f3f5f8;--bor:#d7dde6;--tx:#1d2330;--wa:#25a366}
+  :root{--terra:#9c4631;--terra2:#863a29;--carbon:#333f49;--pill:#59656f;--cream:#f2e7da;--na:#e8882a;--ok:#1f9d57;--wa:#25a366;--rojo:#c0392b;--gris:#f3f5f8;--bor:#d7dde6;--tx:#1d2330}
   *{box-sizing:border-box}
   body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--tx);background:#eef1f5}
-  header{background:var(--az);color:#fff;padding:12px 16px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-  header .hname{font-size:20px;font-weight:bold;line-height:1.1}
-  header .hsub{font-size:12px;opacity:.9}
-  header .hcont{margin-left:auto;font-size:13px;text-align:right}
-  nav{background:var(--az2);display:flex;flex-wrap:wrap;gap:6px;padding:9px}
-  nav button{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);color:#eaf1f8;padding:9px 14px;font-size:14px;cursor:pointer;border-radius:8px;font-weight:bold}
-  nav button:hover{background:rgba(255,255,255,.22)}
-  nav button.on{background:#fff;color:var(--az);border-color:#fff}
+  header{background:var(--terra);color:#fff;padding:12px 16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .logo{width:46px;height:46px;border-radius:9px;background:var(--cream);display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+  header .hname{font-size:20px;font-weight:bold;line-height:1.1;color:#fbf3ea}
+  header .hsub{font-size:12px;color:#eccfc0}
+  header .hcont{margin-left:auto;font-size:13px;text-align:right;color:#fff}
+  nav{background:var(--carbon);display:flex;flex-wrap:wrap;gap:6px;padding:9px}
+  nav button{background:var(--pill);border:0;color:#eaeef1;padding:9px 14px;font-size:14px;cursor:pointer;border-radius:8px;font-weight:bold}
+  nav button:hover{filter:brightness(1.1)}
+  nav button.on{background:var(--cream);color:var(--terra)}
   main{max-width:1000px;margin:0 auto;padding:16px}
   .card{background:#fff;border:1px solid var(--bor);border-radius:10px;padding:16px;margin-bottom:16px}
-  h2{margin:0 0 12px;font-size:18px;color:var(--az)}
-  h3{margin:16px 0 8px;font-size:15px;color:var(--az)}
+  h2{margin:0 0 12px;font-size:18px;color:var(--terra)}
+  h3{margin:16px 0 8px;font-size:15px;color:var(--terra)}
   label{display:block;font-size:13px;margin:8px 0 3px;font-weight:bold}
   input,select{font-family:inherit;font-size:15px;padding:8px 10px;border:1px solid var(--bor);border-radius:7px;width:100%}
-  input:focus,select:focus{outline:2px solid var(--az2);border-color:var(--az2)}
-  button.btn{background:var(--az2);color:#fff;border:0;border-radius:8px;padding:10px 16px;font-size:15px;cursor:pointer;font-weight:bold}
+  input:focus,select:focus{outline:2px solid var(--terra);border-color:var(--terra)}
+  button.btn{background:#475663;color:#fff;border:0;border-radius:8px;padding:10px 16px;font-size:15px;cursor:pointer;font-weight:bold}
   button.btn:hover{filter:brightness(1.08)}
-  button.na{background:var(--na)}button.ok{background:var(--ok)}button.wab{background:var(--wa)}
-  button.gh{background:#fff;color:var(--az2);border:1px solid var(--az2)}
+  button.na{background:var(--na);color:#4a2600}button.ok{background:var(--ok)}button.wab{background:var(--wa)}
+  button.gh{background:#fff;color:var(--terra);border:1px solid var(--terra)}
   button.del{background:#fff;color:var(--rojo);border:1px solid var(--rojo);padding:6px 10px;font-size:13px;border-radius:7px;cursor:pointer}
   button.mini{background:var(--gris);color:var(--tx);border:1px solid var(--bor);padding:6px 10px;font-size:13px;border-radius:7px;cursor:pointer}
   table{width:100%;border-collapse:collapse;font-size:14px}
@@ -36,23 +37,32 @@
   tr.bajo td{background:#fdecea}
   .pill{display:inline-block;background:var(--rojo);color:#fff;font-size:11px;padding:1px 7px;border-radius:99px;margin-left:6px}
   .tag{display:inline-block;font-size:11px;padding:1px 8px;border-radius:99px;color:#fff}
-  .tag.p{background:var(--na)}.tag.r{background:var(--ok)}
+  .tag.p{background:var(--na);color:#4a2600}.tag.r{background:var(--ok)}
   .row{display:flex;gap:10px;flex-wrap:wrap}
   .row>div{flex:1;min-width:140px}
   .muted{color:#667;font-size:13px}
-  .tot{font-size:20px;font-weight:bold;color:var(--az)}
+  .tot{font-size:20px;font-weight:bold;color:var(--terra)}
   .kpis{display:flex;gap:12px;flex-wrap:wrap}
   .kpi{flex:1;min-width:150px;background:var(--gris);border:1px solid var(--bor);border-radius:10px;padding:12px}
-  .kpi .n{font-size:22px;font-weight:bold;color:var(--az)}
+  .kpi .n{font-size:22px;font-weight:bold;color:var(--terra)}
   .kpi .t{font-size:12px;color:#667}
   .ok-msg{background:#e6f6ee;border:1px solid var(--ok);color:#13713d;padding:10px 12px;border-radius:8px;margin:10px 0}
   .warn{background:#fff6e6;border:1px solid var(--na);color:#8a5200;padding:10px 12px;border-radius:8px;margin:10px 0}
   .hide{display:none!important}
-  .line-tbl input{padding:6px 8px;font-size:14px}
+  .line-tbl{min-width:720px;table-layout:fixed}
+  .line-tbl input{padding:7px 8px;font-size:15px}
+  .line-tbl input.n{text-align:right}
+  .det{display:flex;gap:4px}
+  .det button{flex:0 0 34px;border:1px solid var(--bor);background:var(--gris);border-radius:7px;cursor:pointer;font-size:13px}
+  .ac-box{position:fixed;z-index:80;background:#fff;border:1px solid var(--bor);border-radius:8px;box-shadow:0 6px 18px rgba(0,0,0,.18);max-height:260px;overflow-y:auto}
+  .ac-item{display:flex;justify-content:space-between;gap:12px;padding:9px 12px;cursor:pointer;font-size:14px;border-bottom:1px solid #f0f2f5}
+  .ac-item:hover,.ac-item.sel{background:#f7ede4}
+  .ac-item span{color:var(--terra);font-weight:bold;white-space:nowrap}
+  .ac-empty{padding:9px 12px;color:#667;font-size:13px}
   .acc{display:flex;gap:6px;flex-wrap:wrap}
   @media(max-width:700px){header .hcont{margin-left:0;width:100%;text-align:left}main{padding:10px}.hideSmall{display:none}}
   #printArea{display:none}
-  @media print{body *{visibility:hidden}#printArea,#printArea *{visibility:visible}#printArea{display:block;position:absolute;left:0;top:0;width:100%;padding:0}nav,header,.noprint{display:none!important}}
+  @media print{body *{visibility:hidden}#printArea,#printArea *{visibility:visible}#printArea{display:block;position:absolute;left:0;top:0;width:100%;padding:0}nav,header,.noprint,.calc-fab,.calc-panel{display:none!important}}
   .doc{max-width:720px;margin:0 auto;color:#000;font-size:13px}
   .doc .dh{display:flex;justify-content:space-between;border-bottom:2px solid #000;padding-bottom:8px;margin-bottom:8px}
   .doc .dh .big{font-size:20px;font-weight:bold}
@@ -60,10 +70,19 @@
   .doc .totline{text-align:right;font-size:16px;font-weight:bold;margin-top:8px}
   .doc .usd{text-align:right;font-size:13px;color:#333;margin-top:2px}
   .doc .pie{margin-top:18px;font-size:11px;color:#444;text-align:center}
+  .calc-fab{position:fixed;right:18px;bottom:18px;z-index:60;background:var(--carbon);color:#fff;border:0;border-radius:50%;width:58px;height:58px;font-size:13px;font-weight:bold;cursor:pointer;box-shadow:0 3px 10px rgba(0,0,0,.3)}
+  .calc-panel{position:fixed;right:18px;bottom:86px;z-index:60;background:#fff;border:1px solid var(--bor);border-radius:12px;padding:10px;width:224px;box-shadow:0 6px 20px rgba(0,0,0,.25)}
+  #calcDisp{width:100%;text-align:right;font-size:20px;padding:8px;margin-bottom:8px;border:1px solid var(--bor);border-radius:8px;background:#fafafa}
+  .calc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+  .calc-grid button{padding:12px 0;font-size:16px;border:1px solid var(--bor);background:var(--gris);border-radius:8px;cursor:pointer}
+  .calc-grid button.op{background:#f0e3d8;color:var(--terra);font-weight:bold}
+  .calc-grid button.eq{background:var(--na);color:#4a2600;font-weight:bold}
+  .calc-grid button.cl{background:#f6d6d0;color:#a3291f}
 </style>
 </head>
 <body>
 <header>
+  <div class="logo"><svg width="27" height="27" viewBox="0 0 44 44"><polygon points="9,23 22,10 35,23" fill="none" stroke="#9c4631" stroke-width="2.4" stroke-linejoin="round"/><rect x="13" y="23" width="18" height="13" fill="none" stroke="#9c4631" stroke-width="2.4" stroke-linejoin="round"/><line x1="13" y1="29" x2="31" y2="29" stroke="#9c4631" stroke-width="1.6"/><line x1="22" y1="29" x2="22" y2="36" stroke="#9c4631" stroke-width="1.6"/></svg></div>
   <div><div class="hname" id="hName">LA INDIA</div><div class="hsub" id="hSub">Corralón de materiales · Garín</div></div>
   <div class="hcont" id="hCont">WhatsApp 11-6277-0040</div>
 </header>
@@ -87,13 +106,13 @@
       </div>
       <div id="formMat" class="hide" style="margin-top:12px;background:var(--gris);padding:12px;border-radius:8px">
         <div class="row">
-          <div style="flex:2"><label>Material</label><input id="mNom" placeholder="Ej: Cemento Loma Negra 50 kg"></div>
-          <div><label>Unidad</label><select id="mUni"><option>bolsa</option><option>unidad</option><option>metro</option><option>m³</option><option>kg</option><option>varilla</option><option>pallet</option><option>rollo</option><option>chapa</option><option>litro</option></select></div>
+          <div style="flex:2"><label>Material</label><input id="mNom" placeholder="Ej: Cemento Loma Negra"></div>
+          <div><label>Unidad</label><select id="mUni"><option>bolsa</option><option>unidad</option><option>m³</option><option>metro</option><option>kg</option><option>varilla</option><option>fardo</option><option>pallet</option><option>rollo</option><option>chapa</option><option>litro</option></select></div>
         </div>
         <div class="row">
-          <div><label>Cantidad actual</label><input id="mCant" type="number" step="any" value="0"></div>
-          <div><label>Precio unitario ($)</label><input id="mPre" type="number" step="any" value="0"></div>
-          <div><label>Aviso stock bajo (opcional)</label><input id="mMin" type="number" step="any" value="0"></div>
+          <div><label>Cantidad actual</label><input id="mCant" type="text" inputmode="decimal" oninput="liveFmt(this)" value="0"></div>
+          <div><label>Precio unitario ($)</label><input id="mPre" type="text" inputmode="decimal" oninput="liveFmt(this)" value="0"></div>
+          <div><label>Aviso stock bajo (opcional)</label><input id="mMin" type="text" inputmode="decimal" oninput="liveFmt(this)" value="0"></div>
         </div>
         <div style="margin-top:10px" class="acc"><button class="btn ok" onclick="guardarMat()">Guardar material</button><button class="mini" onclick="cerrarMat()">Cancelar</button></div>
       </div>
@@ -110,13 +129,13 @@
   <section id="s-hist" class="hide">
     <div class="card">
       <h2>Reportes de ventas</h2>
-      <p class="muted">Las ventas se cuentan por los remitos confirmados (lo que realmente se entregó).</p>
-      <div class="kpis" style="margin:10px 0">
+      <div class="row"><div style="max-width:220px"><label>Ver</label><select id="mesSel" onchange="renderHist()"></select></div></div>
+      <div class="kpis" style="margin:12px 0">
         <div class="kpi"><div class="n" id="kHoy">$0</div><div class="t">Vendido hoy</div></div>
-        <div class="kpi"><div class="n" id="kMes">$0</div><div class="t">Vendido este mes</div></div>
-        <div class="kpi"><div class="n" id="kCant">0</div><div class="t">Remitos este mes</div></div>
+        <div class="kpi"><div class="n" id="kMes">$0</div><div class="t" id="kMesLbl">Vendido en el mes</div></div>
+        <div class="kpi"><div class="n" id="kCant">0</div><div class="t">Remitos</div></div>
       </div>
-      <h3>Materiales que más salen (este mes)</h3>
+      <h3>Materiales que más salen</h3>
       <div style="overflow-x:auto"><table><thead><tr><th>Material</th><th class="num">Cantidad vendida</th></tr></thead><tbody id="tbTop"></tbody></table></div>
     </div>
     <div class="card">
@@ -133,7 +152,6 @@
         <div><label>WhatsApp (con código, ej 5491162770040)</label><input id="clTel" placeholder="54911........"></div>
         <div style="flex:0 0 auto;display:flex;align-items:flex-end"><button class="btn ok" onclick="guardarCli()">Guardar</button></div>
       </div>
-      <div id="cliEdit"></div>
       <div style="overflow-x:auto;margin-top:12px"><table><thead><tr><th>Nombre / Obra</th><th>WhatsApp</th><th>Acciones</th></tr></thead><tbody id="tbCli"></tbody></table></div>
     </div>
   </section>
@@ -162,11 +180,25 @@
   </section>
 
 </main>
+
+<button class="calc-fab" id="calcBtn" onclick="toggleCalc()">Calc</button>
+<div class="calc-panel hide" id="calcPanel">
+  <input id="calcDisp" readonly>
+  <div class="calc-grid">
+    <button class="cl" onclick="calcClear()">C</button><button class="op" onclick="calcPress('/')">÷</button><button class="op" onclick="calcPress('*')">×</button><button onclick="calcDel()">⌫</button>
+    <button onclick="calcPress('7')">7</button><button onclick="calcPress('8')">8</button><button onclick="calcPress('9')">9</button><button class="op" onclick="calcPress('-')">−</button>
+    <button onclick="calcPress('4')">4</button><button onclick="calcPress('5')">5</button><button onclick="calcPress('6')">6</button><button class="op" onclick="calcPress('+')">+</button>
+    <button onclick="calcPress('1')">1</button><button onclick="calcPress('2')">2</button><button onclick="calcPress('3')">3</button><button class="eq" style="grid-row:span 2" onclick="calcEq()">=</button>
+    <button onclick="calcPress('0')" style="grid-column:span 2">0</button><button onclick="calcPress('.')">,</button>
+  </div>
+</div>
+
 <div id="printArea"></div>
 
 <script>
 const LS='corralon-laindia-v1';
 const DEFcfg={nom:'LA INDIA',sub:'Corralón de materiales · Garín',cont:'WhatsApp 11-6277-0040'};
+const DEFMAT=[['Mts arena','m³'],['Mts piedra','m³'],['Mts recuperado','m³'],['Mts tosca','m³'],['Mts escombro','m³'],['Plasticor','bolsa'],['Cemento Loma Negra','bolsa'],['Cal Cacique','bolsa'],['Cal Milagro','bolsa'],['Pegamento de cerámica Weber','bolsa'],['Varilla 4,2','varilla'],['Varilla del 6','varilla'],['Varilla del 8','varilla'],['Varilla del 10','varilla'],['Varilla del 12','varilla'],['Malla del 4,2','unidad'],['Malla del 5,5','unidad'],['Malla del 6','unidad'],['Clavos de 2"','kg'],['Clavos de 2½"','kg'],['Alambre fardo','fardo'],['Viguetas 2 mts','unidad'],['Viguetas 6 mts','unidad'],['Ladrillo telgopor del 10','unidad'],['Ladrillo telgopor del 12','unidad'],['Ladrillo común','unidad'],['Ladrillo 12x9','unidad'],['Ladrillo 12x6','unidad'],['Ladrillo del 8','unidad'],['Ladrillo media vista','unidad'],['Tubos del 30','unidad'],['Tubos del 40','unidad'],['Caño 110','unidad'],['Caño 60','unidad'],['Caño 40','unidad'],['Piletas de patio','unidad']];
 let db={stock:[],clientes:[],historial:[],cfg:Object.assign({},DEFcfg),contador:{presu:0,remito:0}};
 let doc={presu:mkDoc(),remito:mkDoc()};
 function mkDoc(){return{cliente:'',tel:'',fecha:hoy(),lineas:[],dolar:0,num:null,histId:null}}
@@ -176,9 +208,12 @@ function mesActual(){return hoy().slice(0,7)}
 function fdate(s){if(!s)return'';const p=s.split('-');return p[2]+'/'+p[1]+'/'+p[0]}
 function fmt(n){n=Number(n)||0;return '$'+n.toLocaleString('es-AR',{maximumFractionDigits:2})}
 function fnum(n){n=Number(n)||0;return n.toLocaleString('es-AR',{maximumFractionDigits:2})}
+function fmtInput(n){n=Number(n)||0;return n.toLocaleString('es-AR',{maximumFractionDigits:2})}
+function parseNum(s){if(typeof s==='number')return s;s=String(s).replace(/\./g,'').replace(',','.').replace(/[^0-9.\-]/g,'');const n=parseFloat(s);return isNaN(n)?0:n}
 function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
 
-function load(){try{const r=localStorage.getItem(LS);if(r){const o=JSON.parse(r);db=Object.assign(db,o);db.cfg=Object.assign({},DEFcfg,o.cfg||{});db.contador=Object.assign({presu:0,remito:0},o.contador||{});db.clientes=o.clientes||[];db.historial=o.historial||[]}}catch(e){}}
+function seed(){db.stock=DEFMAT.map((m,i)=>({id:'d'+i,nombre:m[0],unidad:m[1],cantidad:0,precio:0,minimo:0}))}
+function load(){const raw=localStorage.getItem(LS);if(raw){try{const o=JSON.parse(raw);db=Object.assign(db,o);db.cfg=Object.assign({},DEFcfg,o.cfg||{});db.contador=Object.assign({presu:0,remito:0},o.contador||{});db.clientes=o.clientes||[];db.historial=o.historial||[];if(!o.seeded){DEFMAT.forEach((m,k)=>{if(!db.stock.some(x=>x.nombre.toLowerCase()===m[0].toLowerCase()))db.stock.push({id:'d'+k+'_'+Date.now(),nombre:m[0],unidad:m[1],cantidad:0,precio:0,minimo:0})});db.seeded=true;save()}}catch(e){}}else{seed();db.seeded=true;save()}}
 function save(){try{localStorage.setItem(LS,JSON.stringify(db))}catch(e){alert('No se pudo guardar en este navegador.')}}
 
 document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>{
@@ -196,24 +231,21 @@ function pintarHeader(){hName.textContent=db.cfg.nom;hSub.textContent=db.cfg.sub
 function fillConfig(){cNom.value=db.cfg.nom;cSub.value=db.cfg.sub;cCont.value=db.cfg.cont}
 function guardarConfig(){db.cfg={nom:cNom.value.trim()||'Corralón',sub:cSub.value.trim(),cont:cCont.value.trim()};save();pintarHeader();cfgMsg.innerHTML='<div class="ok-msg">Guardado.</div>';setTimeout(()=>cfgMsg.innerHTML='',2500)}
 
-/* stock */
 let editId=null;
-function nuevoMat(){editId=null;mNom.value='';mUni.value='bolsa';mCant.value=0;mPre.value=0;mMin.value=0;formMat.classList.remove('hide');mNom.focus()}
+function nuevoMat(){editId=null;mNom.value='';mUni.value='bolsa';mCant.value='0';mPre.value='0';mMin.value='0';formMat.classList.remove('hide');mNom.focus()}
 function cerrarMat(){formMat.classList.add('hide')}
-function guardarMat(){const nom=mNom.value.trim();if(!nom){alert('Poné el nombre del material.');return}const o={id:editId||('m'+Date.now()),nombre:nom,unidad:mUni.value,cantidad:Number(mCant.value)||0,precio:Number(mPre.value)||0,minimo:Number(mMin.value)||0};if(editId){const i=db.stock.findIndex(x=>x.id===editId);db.stock[i]=o}else{db.stock.push(o)}save();cerrarMat();renderStock()}
-function editarMat(id){const m=db.stock.find(x=>x.id===id);editId=id;mNom.value=m.nombre;mUni.value=m.unidad;mCant.value=m.cantidad;mPre.value=m.precio;mMin.value=m.minimo;formMat.classList.remove('hide');mNom.focus()}
+function guardarMat(){const nom=mNom.value.trim();if(!nom){alert('Poné el nombre del material.');return}const o={id:editId||('m'+Date.now()),nombre:nom,unidad:mUni.value,cantidad:parseNum(mCant.value),precio:parseNum(mPre.value),minimo:parseNum(mMin.value)};if(editId){const i=db.stock.findIndex(x=>x.id===editId);db.stock[i]=o}else{db.stock.push(o)}save();cerrarMat();renderStock()}
+function editarMat(id){const m=db.stock.find(x=>x.id===id);editId=id;mNom.value=m.nombre;mUni.value=m.unidad;mCant.value=fmtInput(m.cantidad);mPre.value=fmtInput(m.precio);mMin.value=fmtInput(m.minimo);formMat.classList.remove('hide');mNom.focus()}
 function borrarMat(id){if(confirm('¿Borrar este material del stock?')){db.stock=db.stock.filter(x=>x.id!==id);save();renderStock()}}
-function sumarStock(id){const m=db.stock.find(x=>x.id===id);const v=prompt('¿Cuánto llegó de "'+m.nombre+'"? (negativo para restar)','');if(v===null)return;const n=Number(v);if(isNaN(n)){alert('Número no válido.');return}m.cantidad=(Number(m.cantidad)||0)+n;save();renderStock()}
-function renderStock(){const q=(buscar.value||'').toLowerCase();let tot=0;const rows=db.stock.filter(m=>m.nombre.toLowerCase().includes(q)).map(m=>{const val=(Number(m.cantidad)||0)*(Number(m.precio)||0);tot+=val;const bajo=m.minimo>0&&Number(m.cantidad)<=m.minimo;return `<tr class="${bajo?'bajo':''}"><td>${esc(m.nombre)}${bajo?'<span class="pill">bajo</span>':''}</td><td>${esc(m.unidad)}</td><td class="num">${fnum(m.cantidad)}</td><td class="num">${fmt(m.precio)}</td><td class="num hideSmall">${fmt(val)}</td><td><div class="acc"><button class="mini" onclick="sumarStock('${m.id}')">+ Stock</button><button class="mini" onclick="editarMat('${m.id}')">Editar</button><button class="del" onclick="borrarMat('${m.id}')">Borrar</button></div></td></tr>`}).join('');tbStock.innerHTML=rows||'<tr><td colspan="6" class="muted">No hay materiales todavía. Tocá "Agregar material".</td></tr>';valTot.textContent=fmt(tot)}
+function sumarStock(id){const m=db.stock.find(x=>x.id===id);const v=prompt('¿Cuánto llegó de "'+m.nombre+'"? (negativo para restar)','');if(v===null)return;const n=parseNum(v);m.cantidad=(Number(m.cantidad)||0)+n;save();renderStock()}
+function renderStock(){const q=(buscar.value||'').toLowerCase();let tot=0;const rows=db.stock.filter(m=>m.nombre.toLowerCase().includes(q)).map(m=>{const val=(Number(m.cantidad)||0)*(Number(m.precio)||0);tot+=val;const bajo=m.minimo>0&&Number(m.cantidad)<=m.minimo;return `<tr class="${bajo?'bajo':''}"><td>${esc(m.nombre)}${bajo?'<span class="pill">bajo</span>':''}</td><td>${esc(m.unidad)}</td><td class="num">${fnum(m.cantidad)}</td><td class="num">${fmt(m.precio)}</td><td class="num hideSmall">${fmt(val)}</td><td><div class="acc"><button class="mini" onclick="sumarStock('${m.id}')">+ Stock</button><button class="mini" onclick="editarMat('${m.id}')">Editar</button><button class="del" onclick="borrarMat('${m.id}')">Borrar</button></div></td></tr>`}).join('');tbStock.innerHTML=rows||'<tr><td colspan="6" class="muted">No hay materiales. Tocá "Agregar material".</td></tr>';valTot.textContent=fmt(tot)}
 
-/* clientes */
 let editCli=null;
 function guardarCli(){const n=clNom.value.trim();if(!n){alert('Poné el nombre.');return}const o={id:editCli||('c'+Date.now()),nombre:n,tel:clTel.value.trim()};if(editCli){const i=db.clientes.findIndex(x=>x.id===editCli);db.clientes[i]=o;editCli=null}else{db.clientes.push(o)}clNom.value='';clTel.value='';save();renderCli()}
 function editarCli(id){const c=db.clientes.find(x=>x.id===id);editCli=id;clNom.value=c.nombre;clTel.value=c.tel;clNom.focus()}
 function borrarCli(id){if(confirm('¿Borrar este cliente?')){db.clientes=db.clientes.filter(x=>x.id!==id);save();renderCli()}}
 function renderCli(){tbCli.innerHTML=db.clientes.map(c=>`<tr><td>${esc(c.nombre)}</td><td>${esc(c.tel)||'<span class="muted">—</span>'}</td><td><div class="acc"><button class="mini" onclick="editarCli('${c.id}')">Editar</button><button class="del" onclick="borrarCli('${c.id}')">Borrar</button></div></td></tr>`).join('')||'<tr><td colspan="3" class="muted">Todavía no hay clientes guardados.</td></tr>'}
 
-/* presupuesto / remito */
 function renderDoc(tipo){
   const d=doc[tipo];const esRem=tipo==='remito';
   const matOpts=db.stock.map(m=>`<option value="${esc(m.nombre)}">`).join('');
@@ -229,10 +261,10 @@ function renderDoc(tipo){
     </div>
     <datalist id="dl_${tipo}">${matOpts}</datalist>
     <h3>Materiales</h3>
-    <div style="overflow-x:auto"><table class="line-tbl"><thead><tr><th style="width:42%">Detalle</th><th class="num" style="width:14%">Cant.</th><th class="num" style="width:20%">P. unitario</th><th class="num" style="width:18%">Importe</th><th></th></tr></thead><tbody id="${tipo}_tb"></tbody></table></div>
+    <div style="overflow-x:auto"><table class="line-tbl"><thead><tr><th style="width:38%">Detalle</th><th class="num" style="width:13%">Cant.</th><th class="num" style="width:21%">P. unitario</th><th class="num" style="width:21%">Importe</th><th style="width:48px"></th></tr></thead><tbody id="${tipo}_tb"></tbody></table></div>
     <button class="mini" style="margin-top:8px" onclick="addLinea('${tipo}')">+ Agregar renglón</button>
     <div class="row" style="margin-top:14px;align-items:flex-end">
-      <div style="max-width:200px"><label>Valor del dólar hoy ($)</label><input id="${tipo}_dol" type="number" step="any" value="${d.dolar||''}" placeholder="Ej: 1695" oninput="doc.${tipo}.dolar=Number(this.value)||0;calcTot('${tipo}')"></div>
+      <div style="max-width:200px"><label>Valor del dólar hoy ($)</label><input id="${tipo}_dol" type="text" inputmode="decimal" value="${d.dolar?fmtInput(d.dolar):''}" placeholder="Ej: 1.695" oninput="liveFmt(this);doc.${tipo}.dolar=parseNum(this.value);calcTot('${tipo}')"></div>
       <div style="text-align:right"><div class="tot">Total: <span id="${tipo}_tot">$0</span></div><div class="muted" id="${tipo}_usd"></div></div>
     </div>
     <div class="acc noprint" style="margin-top:14px">
@@ -249,35 +281,68 @@ function renderDoc(tipo){
 function buscarTel(tipo,nombre){const c=db.clientes.find(x=>x.nombre.toLowerCase()===(nombre||'').toLowerCase());if(c&&c.tel){doc[tipo].tel=c.tel;const el=document.getElementById(tipo+'_tel');if(el)el.value=c.tel}}
 function addLinea(tipo){doc[tipo].lineas.push({detalle:'',cant:1,precio:0});renderLineas(tipo);calcTot(tipo)}
 function delLinea(tipo,i){doc[tipo].lineas.splice(i,1);if(doc[tipo].lineas.length===0)doc[tipo].lineas.push({detalle:'',cant:1,precio:0});renderLineas(tipo);calcTot(tipo)}
-function renderLineas(tipo){const tb=document.getElementById(tipo+'_tb');tb.innerHTML=doc[tipo].lineas.map((l,i)=>{const imp=(Number(l.cant)||0)*(Number(l.precio)||0);return `<tr><td><input list="dl_${tipo}" value="${esc(l.detalle)}" oninput="setLin('${tipo}',${i},'detalle',this.value)" onchange="autoPrecio('${tipo}',${i},this.value)"></td><td><input type="number" step="any" value="${l.cant}" oninput="setLin('${tipo}',${i},'cant',this.value)"></td><td><input type="number" step="any" value="${l.precio}" oninput="setLin('${tipo}',${i},'precio',this.value)"></td><td class="num">${fmt(imp)}</td><td><button class="del" onclick="delLinea('${tipo}',${i})">✕</button></td></tr>`}).join('')}
-function setLin(tipo,i,k,v){doc[tipo].lineas[i][k]=(k==='detalle')?v:(Number(v)||0);if(k!=='detalle'){const tb=document.getElementById(tipo+'_tb');tb.rows[i].cells[3].textContent=fmt((Number(doc[tipo].lineas[i].cant)||0)*(Number(doc[tipo].lineas[i].precio)||0))}calcTot(tipo)}
-function autoPrecio(tipo,i,nombre){const m=db.stock.find(x=>x.nombre.toLowerCase()===nombre.toLowerCase());if(m){doc[tipo].lineas[i].precio=m.precio;renderLineas(tipo);calcTot(tipo)}}
+function renderLineas(tipo){const tb=document.getElementById(tipo+'_tb');tb.innerHTML=doc[tipo].lineas.map((l,i)=>{const imp=(Number(l.cant)||0)*(Number(l.precio)||0);return `<tr><td><div class="det"><input autocomplete="off" placeholder="Tocá o escribí el material" value="${esc(l.detalle)}" oninput="onDet('${tipo}',${i},this.value);acShow('${tipo}',${i},this)" onfocus="acShow('${tipo}',${i},this)" onkeydown="acKey(event,'${tipo}',${i},this)" onblur="setTimeout(acHide,180)"><button type="button" title="Ver materiales" onmousedown="event.preventDefault();acAll('${tipo}',${i},this)">▼</button></div></td><td><input class="n" type="text" inputmode="decimal" value="${fmtInput(l.cant)}" oninput="liveFmt(this);setLin('${tipo}',${i},'cant',this.value)"></td><td><input class="n" type="text" inputmode="decimal" value="${fmtInput(l.precio)}" oninput="liveFmt(this);setLin('${tipo}',${i},'precio',this.value)"></td><td class="num">${fmt(imp)}</td><td><button class="del" onclick="delLinea('${tipo}',${i})">✕</button></td></tr>`}).join('')}
+function fila(tipo,i){return document.getElementById(tipo+'_tb').rows[i]}
+function reImporte(tipo,i){const d=doc[tipo].lineas[i];fila(tipo,i).cells[3].textContent=fmt((Number(d.cant)||0)*(Number(d.precio)||0));calcTot(tipo)}
+function setLin(tipo,i,k,v){doc[tipo].lineas[i][k]=(k==='detalle')?v:parseNum(v);if(k!=='detalle')reImporte(tipo,i);else calcTot(tipo)}
+function onDet(tipo,i,v){const d=doc[tipo].lineas[i];d.detalle=v;const m=db.stock.find(x=>x.nombre.toLowerCase()===String(v).trim().toLowerCase());if(m){d.precio=m.precio;const pin=fila(tipo,i).cells[2].querySelector('input');if(pin)pin.value=fmtInput(m.precio)}reImporte(tipo,i)}
+function liveFmt(el){let v=el.value.replace(/[^0-9,]/g,'');const k=v.indexOf(',');let ent=k>=0?v.slice(0,k):v,dec=k>=0?v.slice(k+1).replace(/,/g,'').slice(0,2):null;ent=ent.replace(/^0+(?=\d)/,'');const f=ent?Number(ent).toLocaleString('es-AR'):(dec!==null?'0':'');el.value=f+(dec!==null?','+dec:'');}
+let AC={tipo:null,i:null,items:[],sel:-1};
+function acBox(){let b=document.getElementById('acBox');if(!b){b=document.createElement('div');b.id='acBox';b.className='ac-box hide';document.body.appendChild(b)}return b}
+function acShow(tipo,i,el,todos){const q=todos?'':String(el.value||'').trim().toLowerCase();let it=db.stock.filter(m=>!q||m.nombre.toLowerCase().startsWith(q));if(q){db.stock.forEach(m=>{const n=m.nombre.toLowerCase();if(!n.startsWith(q)&&n.includes(q))it.push(m)})}AC={tipo,i,items:it,sel:-1};const b=acBox();if(q&&it.length===1&&it[0].nombre.toLowerCase()===q){b.classList.add('hide');return}b.innerHTML=it.length?it.map((m,k)=>`<div class="ac-item" data-k="${k}" onmousedown="event.preventDefault();acPick(${k})">${esc(m.nombre)} <span>${m.precio?fmt(m.precio):'sin precio'}</span></div>`).join(''):'<div class="ac-empty">No hay materiales con ese nombre. Podés escribirlo igual.</div>';const inp=el.tagName==='INPUT'?el:el.parentNode.querySelector('input');const r=inp.getBoundingClientRect();b.style.left=r.left+'px';b.style.top=(r.bottom+2)+'px';b.style.width=Math.max(r.width+38,300)+'px';b.classList.remove('hide')}
+function acAll(tipo,i,btn){const inp=btn.parentNode.querySelector('input');inp.focus();acShow(tipo,i,inp,true)}
+function acHide(){const b=document.getElementById('acBox');if(b)b.classList.add('hide')}
+function acPick(k){const m=AC.items[k];if(!m)return;const {tipo,i}=AC;const d=doc[tipo].lineas[i];d.detalle=m.nombre;d.precio=m.precio;const f=fila(tipo,i);f.cells[0].querySelector('input').value=m.nombre;f.cells[2].querySelector('input').value=fmtInput(m.precio);reImporte(tipo,i);acHide();const c=f.cells[1].querySelector('input');c.focus();c.select()}
+function acKey(e,tipo,i,el){const b=document.getElementById('acBox');if(!b||b.classList.contains('hide'))return;const n=AC.items.length;if(e.key==='ArrowDown'){e.preventDefault();AC.sel=(AC.sel+1)%n}else if(e.key==='ArrowUp'){e.preventDefault();AC.sel=(AC.sel-1+n)%n}else if(e.key==='Enter'){if(AC.sel>=0){e.preventDefault();acPick(AC.sel)}return}else if(e.key==='Escape'){acHide();return}else return;b.querySelectorAll('.ac-item').forEach((x,k)=>x.classList.toggle('sel',k===AC.sel));const s=b.querySelector('.ac-item.sel');if(s)s.scrollIntoView({block:'nearest'})}
+window.addEventListener('scroll',acHide,true);window.addEventListener('resize',acHide);
 function calcTot(tipo){const t=doc[tipo].lineas.reduce((a,l)=>a+(Number(l.cant)||0)*(Number(l.precio)||0),0);document.getElementById(tipo+'_tot').textContent=fmt(t);const dol=doc[tipo].dolar;const u=document.getElementById(tipo+'_usd');u.textContent=(dol>0)?('≈ USD '+fnum(t/dol)+' (dólar a '+fmt(dol)+')'):'';return t}
 function limpiarDoc(tipo){if(!confirm('¿Vaciar este documento?'))return;doc[tipo]=mkDoc();renderDoc(tipo)}
 function pasarARemito(){doc.remito=Object.assign(mkDoc(),{cliente:doc.presu.cliente,tel:doc.presu.tel,fecha:doc.presu.fecha,dolar:doc.presu.dolar,lineas:JSON.parse(JSON.stringify(doc.presu.lineas))});document.querySelector('nav button[data-s="remito"]').click();document.getElementById('remito_msg').innerHTML='<div class="warn">Pasé el presupuesto a remito. Revisá y tocá "Confirmar entrega" para descontar el stock.</div>'}
 
-function saveHist(tipo,d){const rec={id:d.histId||('h'+Date.now()),tipo:tipo,num:d.num,fecha:d.fecha,cliente:d.cliente,tel:d.tel,dolar:d.dolar,total:calcTotLineas(d.lineas),lineas:d.lineas.filter(l=>String(l.detalle).trim()).map(l=>({detalle:l.detalle,cant:Number(l.cant)||0,precio:Number(l.precio)||0})),ts:Date.now()};const i=db.historial.findIndex(x=>x.id===rec.id);if(i>=0)db.historial[i]=rec;else db.historial.push(rec);d.histId=rec.id;save()}
 function calcTotLineas(ls){return ls.reduce((a,l)=>a+(Number(l.cant)||0)*(Number(l.precio)||0),0)}
-
+function saveHist(tipo,d){const rec={id:d.histId||('h'+Date.now()),tipo:tipo,num:d.num,fecha:d.fecha,cliente:d.cliente,tel:d.tel,dolar:d.dolar,total:calcTotLineas(d.lineas),lineas:d.lineas.filter(l=>String(l.detalle).trim()).map(l=>({detalle:l.detalle,cant:Number(l.cant)||0,precio:Number(l.precio)||0})),ts:Date.now()};const i=db.historial.findIndex(x=>x.id===rec.id);if(i>=0)db.historial[i]=rec;else db.historial.push(rec);d.histId=rec.id;save()}
 function confirmarRemito(){const d=doc.remito;if(d.lineas.every(l=>!String(l.detalle).trim())){alert('El remito está vacío.');return}let faltan=[];d.lineas.forEach(l=>{const m=db.stock.find(x=>x.nombre.toLowerCase()===(l.detalle||'').toLowerCase());if(m&&(Number(l.cant)||0)>Number(m.cantidad))faltan.push(m.nombre+' (hay '+fnum(m.cantidad)+', piden '+fnum(l.cant)+')')});let txt='Se va a descontar del stock lo entregado. ¿Confirmás?';if(faltan.length)txt='OJO, no alcanza el stock de:\n- '+faltan.join('\n- ')+'\n\nIgual se puede descontar (quedaría en negativo). ¿Confirmás?';if(!confirm(txt))return;let desc=[];d.lineas.forEach(l=>{const m=db.stock.find(x=>x.nombre.toLowerCase()===(l.detalle||'').toLowerCase());if(m){m.cantidad=(Number(m.cantidad)||0)-(Number(l.cant)||0);desc.push(m.nombre)}});if(!d.num){db.contador.remito++;d.num=db.contador.remito}saveHist('remito',d);renderStock();renderDoc('remito');document.getElementById('remito_msg').innerHTML='<div class="ok-msg">Listo. Remito N.º '+String(d.num).padStart(4,'0')+' confirmado. Descontado del stock: '+(desc.length?desc.join(', '):'nada de la lista')+'. Quedó guardado en el Historial.</div>'}
 
-/* imprimir */
 function docHTML(nom,sub,cont,esRem,num,fecha,cliente,lineas,dolar){const t=lineas.reduce((a,l)=>a+(Number(l.cant)||0)*(Number(l.precio)||0),0);const filas=lineas.filter(l=>String(l.detalle).trim()).map(l=>`<tr><td>${esc(l.detalle)}</td><td class="num">${fnum(l.cant)}</td><td class="num">${fmt(l.precio)}</td><td class="num">${fmt((Number(l.cant)||0)*(Number(l.precio)||0))}</td></tr>`).join('');const usd=(dolar>0)?`<div class="usd">Dólar: ${fmt(dolar)} &nbsp;·&nbsp; Total en dólares: USD ${fnum(t/dolar)}</div>`:'';const numTxt=(typeof num==='number')?String(num).padStart(4,'0'):(num||'—');return `<div class="doc"><div class="dh"><div><div class="big">${esc(nom)}</div><div>${esc(sub)}</div><div>${esc(cont)}</div></div><div class="tt"><div class="big">${esRem?'REMITO':'PRESUPUESTO'}</div><div>N.º ${numTxt}</div><div>Fecha: ${fdate(fecha)}</div></div></div><div><b>Cliente / Obra:</b> ${esc(cliente)||'—'}</div><table style="margin-top:8px"><thead><tr><th>Detalle</th><th class="num">Cant.</th><th class="num">P. unitario</th><th class="num">Importe</th></tr></thead><tbody>${filas}</tbody></table><div class="totline">TOTAL: ${fmt(t)}</div>${usd}<div class="pie">${esc(nom)} · ${esc(cont)}</div></div>`}
-function imprimir(tipo){const d=doc[tipo];const esRem=tipo==='remito';if(d.lineas.every(l=>!String(l.detalle).trim())){alert('Cargá al menos un material.');return}if(!d.num){if(esRem){/* sin confirmar */}else{db.contador.presu++;d.num=db.contador.presu}}if(!esRem)saveHist('presu',d);document.getElementById('printArea').innerHTML=docHTML(db.cfg.nom,db.cfg.sub,db.cfg.cont,esRem,d.num||'(sin confirmar)',d.fecha,d.cliente,d.lineas,d.dolar);window.print()}
+function imprimir(tipo){const d=doc[tipo];const esRem=tipo==='remito';if(d.lineas.every(l=>!String(l.detalle).trim())){alert('Cargá al menos un material.');return}if(!d.num){if(!esRem){db.contador.presu++;d.num=db.contador.presu}}if(!esRem)saveHist('presu',d);document.getElementById('printArea').innerHTML=docHTML(db.cfg.nom,db.cfg.sub,db.cfg.cont,esRem,d.num||'(sin confirmar)',d.fecha,d.cliente,d.lineas,d.dolar);window.print()}
 function reimprimir(id){const r=db.historial.find(x=>x.id===id);if(!r)return;document.getElementById('printArea').innerHTML=docHTML(db.cfg.nom,db.cfg.sub,db.cfg.cont,r.tipo==='remito',r.num,r.fecha,r.cliente,r.lineas,r.dolar);window.print()}
 
-/* WhatsApp */
 function textoWA(nom,esRem,num,fecha,cliente,lineas,dolar){const t=lineas.filter(l=>String(l.detalle).trim()).reduce((a,l)=>a+(Number(l.cant)||0)*(Number(l.precio)||0),0);let s='*'+nom+'*\n'+(esRem?'REMITO':'PRESUPUESTO')+(num?(' N.º '+(typeof num==='number'?String(num).padStart(4,'0'):num)):'')+'\nFecha: '+fdate(fecha)+'\n';if(cliente)s+='Cliente: '+cliente+'\n';s+='\n';lineas.filter(l=>String(l.detalle).trim()).forEach(l=>{s+='• '+fnum(l.cant)+' x '+l.detalle+' — '+fmt((Number(l.cant)||0)*(Number(l.precio)||0))+'\n'});s+='\n*TOTAL: '+fmt(t)+'*';if(dolar>0)s+='\n(USD '+fnum(t/dolar)+' a '+fmt(dolar)+')';return s}
-function enviarWA(tipo){const d=doc[tipo];if(d.lineas.every(l=>!String(l.detalle).trim())){alert('Cargá al menos un material.');return}let tel=(d.tel||'').replace(/[^0-9]/g,'');if(!tel){const v=prompt('Número de WhatsApp del cliente (con código de país, ej 5491162770040):','');if(v===null)return;tel=v.replace(/[^0-9]/g,'')}const txt=textoWA(db.cfg.nom,tipo==='remito',d.num,d.fecha,d.cliente,d.lineas,d.dolar);const url='https://wa.me/'+tel+'?text='+encodeURIComponent(txt);window.open(url,'_blank')}
+function enviarWA(tipo){const d=doc[tipo];if(d.lineas.every(l=>!String(l.detalle).trim())){alert('Cargá al menos un material.');return}let tel=(d.tel||'').replace(/[^0-9]/g,'');if(!tel){const v=prompt('Número de WhatsApp del cliente (con código de país, ej 5491162770040):','');if(v===null)return;tel=v.replace(/[^0-9]/g,'')}const txt=textoWA(db.cfg.nom,tipo==='remito',d.num,d.fecha,d.cliente,d.lineas,d.dolar);window.open('https://wa.me/'+tel+'?text='+encodeURIComponent(txt),'_blank')}
 
-/* historial y reportes */
-function renderHist(){const mes=mesActual();const rem=db.historial.filter(r=>r.tipo==='remito');const hoyS=hoy();const vHoy=rem.filter(r=>r.fecha===hoyS).reduce((a,r)=>a+r.total,0);const remMes=rem.filter(r=>(r.fecha||'').slice(0,7)===mes);const vMes=remMes.reduce((a,r)=>a+r.total,0);kHoy.textContent=fmt(vHoy);kMes.textContent=fmt(vMes);kCant.textContent=remMes.length;const agg={};remMes.forEach(r=>r.lineas.forEach(l=>{const k=l.detalle.trim();if(!k)return;agg[k]=(agg[k]||0)+(Number(l.cant)||0)}));const top=Object.entries(agg).sort((a,b)=>b[1]-a[1]).slice(0,5);tbTop.innerHTML=top.map(([n,c])=>`<tr><td>${esc(n)}</td><td class="num">${fnum(c)}</td></tr>`).join('')||'<tr><td colspan="2" class="muted">Todavía no hay remitos este mes.</td></tr>';
-  const hs=db.historial.slice().sort((a,b)=>b.ts-a.ts);tbHist.innerHTML=hs.map(r=>`<tr><td><span class="tag ${r.tipo==='remito'?'r':'p'}">${r.tipo==='remito'?'Remito':'Presup.'}</span></td><td>${r.num?String(r.num).padStart(4,'0'):'—'}</td><td>${fdate(r.fecha)}</td><td>${esc(r.cliente)||'—'}</td><td class="num">${fmt(r.total)}</td><td><div class="acc"><button class="mini" onclick="reimprimir('${r.id}')">Reimprimir</button><button class="del" onclick="borrarHist('${r.id}')">Borrar</button></div></td></tr>`).join('')||'<tr><td colspan="6" class="muted">Todavía no hay documentos guardados.</td></tr>'}
+function renderHist(){
+  const sel=document.getElementById('mesSel');
+  const months=[...new Set(db.historial.map(r=>(r.fecha||'').slice(0,7)).filter(Boolean))].sort().reverse();
+  const cur=(sel&&sel.value)?sel.value:mesActual();
+  let opts='<option value="todos">Todos</option>'+months.map(m=>`<option value="${m}">${m.slice(5,7)}/${m.slice(0,4)}</option>`).join('');
+  if(cur!=='todos'&&!months.includes(cur))opts+=`<option value="${cur}">${cur.slice(5,7)}/${cur.slice(0,4)}</option>`;
+  sel.innerHTML=opts;sel.value=cur;
+  const inScope=r=>cur==='todos'?true:(r.fecha||'').slice(0,7)===cur;
+  const rem=db.historial.filter(r=>r.tipo==='remito');const hoyS=hoy();
+  kHoy.textContent=fmt(rem.filter(r=>r.fecha===hoyS).reduce((a,r)=>a+r.total,0));
+  const remScope=rem.filter(inScope);
+  kMes.textContent=fmt(remScope.reduce((a,r)=>a+r.total,0));
+  kCant.textContent=remScope.length;
+  kMesLbl.textContent=cur==='todos'?'Vendido (todo)':'Vendido en el mes';
+  const agg={};remScope.forEach(r=>r.lineas.forEach(l=>{const k=(l.detalle||'').trim();if(!k)return;agg[k]=(agg[k]||0)+(Number(l.cant)||0)}));
+  const top=Object.entries(agg).sort((a,b)=>b[1]-a[1]).slice(0,5);
+  tbTop.innerHTML=top.map(([n,c])=>`<tr><td>${esc(n)}</td><td class="num">${fnum(c)}</td></tr>`).join('')||'<tr><td colspan="2" class="muted">Sin ventas en este período.</td></tr>';
+  const hs=db.historial.filter(inScope).slice().sort((a,b)=>b.ts-a.ts);
+  tbHist.innerHTML=hs.map(r=>`<tr><td><span class="tag ${r.tipo==='remito'?'r':'p'}">${r.tipo==='remito'?'Remito':'Presup.'}</span></td><td>${r.num?String(r.num).padStart(4,'0'):'—'}</td><td>${fdate(r.fecha)}</td><td>${esc(r.cliente)||'—'}</td><td class="num">${fmt(r.total)}</td><td><div class="acc"><button class="mini" onclick="reimprimir('${r.id}')">Reimprimir</button><button class="del" onclick="borrarHist('${r.id}')">Borrar</button></div></td></tr>`).join('')||'<tr><td colspan="6" class="muted">Sin documentos en este período.</td></tr>';
+}
 function borrarHist(id){if(confirm('¿Borrar este documento del historial? (no cambia el stock)')){db.historial=db.historial.filter(x=>x.id!==id);save();renderHist()}}
 
-/* copia */
 function exportar(){const blob=new Blob([JSON.stringify(db,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='copia-corralon-'+hoy()+'.json';a.click();copiaMsg.innerHTML='<div class="ok-msg">Copia descargada. Guardala en tu carpeta o subila a tu Drive.</div>';setTimeout(()=>copiaMsg.innerHTML='',4000)}
 function importar(inp){const f=inp.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const o=JSON.parse(r.result);if(!o.stock)throw 0;if(!confirm('Esto reemplaza los datos actuales por los de la copia. ¿Seguís?')){inp.value='';return}db=Object.assign({stock:[],clientes:[],historial:[]},o);db.cfg=Object.assign({},DEFcfg,o.cfg||{});db.contador=Object.assign({presu:0,remito:0},o.contador||{});db.clientes=o.clientes||[];db.historial=o.historial||[];save();pintarHeader();renderStock();copiaMsg.innerHTML='<div class="ok-msg">Copia restaurada.</div>'}catch(e){copiaMsg.innerHTML='<div class="warn">El archivo no es una copia válida.</div>'}inp.value=''};r.readAsText(f)}
+
+/* calculadora */
+let calcExpr='';
+function toggleCalc(){document.getElementById('calcPanel').classList.toggle('hide')}
+function calcShow(){document.getElementById('calcDisp').value=calcExpr.replace(/\*/g,'×').replace(/\//g,'÷').replace(/-/g,'−')}
+function calcPress(k){calcExpr+=k;calcShow()}
+function calcClear(){calcExpr='';document.getElementById('calcDisp').value=''}
+function calcDel(){calcExpr=calcExpr.slice(0,-1);calcShow()}
+function calcEq(){try{const s=calcExpr.replace(/×/g,'*').replace(/÷/g,'/').replace(/−/g,'-').replace(',','.').replace(/[^0-9+\-*/.]/g,'');if(!s){return}let r=Function('return ('+s+')')();r=Math.round(r*100)/100;calcExpr=String(r);document.getElementById('calcDisp').value=r.toLocaleString('es-AR',{maximumFractionDigits:2})}catch(e){document.getElementById('calcDisp').value='Error';calcExpr=''}}
 
 load();pintarHeader();renderStock();
 </script>
